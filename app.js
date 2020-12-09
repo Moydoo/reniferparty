@@ -1,7 +1,7 @@
 const http = require('http')
 const fs = require('fs')
 const port = 3000
-var express = require('express')
+const express = require('express')
 var path = require('path')
 var app = express()
 
