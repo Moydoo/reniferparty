@@ -1,0 +1,202 @@
+@font-face {
+  font-family: Atari_Classic;
+  src: url(../fonts/AtariClassicChunky-PxXP.ttf);
+}
+
+* {
+  font-family: Atari_Classic;
+}
+
+body {
+  padding: 20px 50px;
+  background: #262626;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  grid-gap: 20px;
+  grid-template-areas:
+    "kuchnia konferencyjna akwarium kawiarnia s44"
+    "damska glewo gprawo gubikacja dziecigora"
+    "bar bar bar bar bar";
+}
+
+/* GRID NAMES */
+.kuchnia {
+  grid-area: kuchnia;
+}
+
+.konferencyjna {
+  grid-area: konferencyjna;
+}
+
+.damska {
+  grid-area: damska;
+}
+
+.glewo {
+  grid-area: glewo;
+}
+
+.gprawo {
+  grid-area: gprawo;
+}
+
+.gubikacja {
+  grid-area: gubikacja;
+}
+
+.akwarium {
+  grid-area: akwarium;
+}
+
+.kawiarnia {
+  grid-area: kawiarnia;
+}
+
+.s44 {
+  grid-area: s44;
+}
+
+.dziecigora {
+  grid-area: dziecigora;
+}
+
+.bar {
+  grid-area: bar;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PAGE  */
+h1 {
+  font-size: 1.5em;
+}
+
+h1, h2, h3, h4, h5 {
+  color: white;
+  text-shadow: 0 0 5px white;
+}
+
+h3 {
+  margin: 50px 0px 20px 0px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]+span {
+  color: red;
+  animation: blink_red 2.5s linear infinite;
+}
+
+input[type="checkbox"]:checked+span {
+  color: green;
+  text-shadow: 0 0 10px green;
+  animation: blink_green 0s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes blink_red {
+  0% {
+    text-shadow: 0 0 3px red;
+    filter: grayscale(0.4);
+  }
+
+  50% {
+    text-shadow: 0 0 20px red;
+    filter: grayscale(0);
+  }
+
+  100% {
+    text-shadow: 0 0 3px red;
+    filter: grayscale(0.4);
+  }
+}
+
+@keyframes blink_green {
+  0% {
+    text-shadow: 0 0 0px green;
+  }
+
+  100% {
+    text-shadow: 0 0 0px green;
+  }
+}
+
+.task-text_area {
+  margin: 15px 10px 0px 0px;
+}
+
+span {
+  font-size: 14px;
+}
+
+.ready {
+  font-size: 1.5em;
+}
+
+.ui-progressbar-value {
+  background: lightgreen;
+  height: 100%;
+}
+
+.progressbar-container {
+  margin: 50px 0px 0px 0px;
+  position: relative;
+  width: 60%;
+}
+
+.progressbar-bar {
+  height: 25px;
+  margin: 10px 0;
+  border: 2px solid white;
+  border-radius: 7px;
+}
+
+.progressbar-label {
+  position: absolute;
+  top: 15px;
+  left: 48%;
+  z-index: 2;
+  color: white;
+}
+
+@media only screen and (max-width: 1250px) {
+  .container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-gap: 10px;
+    grid-template-areas:
+      "kuchnia"
+      "konferencyjna"
+      "damska"
+      "glewo"
+      "gprawo"
+      "gubikacja"
+      "akwarium"
+      "kawiarnia"
+      "s44"
+      "dziecigora"
+      "bar";
+  }
+
+  .progressbar-container {
+    width: 85%;
+  }
+  .bar{
+    position: sticky;
+    bottom: 20px;
+  }
+  .progressbar-bar{
+    background: #262626;
+  }
+  .progressbar-label{
+    left: 45%;
+  }
+}
