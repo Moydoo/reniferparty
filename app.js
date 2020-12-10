@@ -10,7 +10,7 @@ const data = Array(itemCount).fill(0).map(
   (_, index) => `box${index}`
 ).reduce(
   (items, item) => {
-    items[item] = false
+    items[item] = Math.random() < 0.5
     return items
   },
   {}

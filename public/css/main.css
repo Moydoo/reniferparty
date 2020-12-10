@@ -200,3 +200,7 @@ span {
     left: 45%;
   }
 }
+
+.hidden {
+  opacity: 0
+}
