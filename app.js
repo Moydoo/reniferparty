@@ -1,7 +1,9 @@
 const port = process.env.PORT || 3000
 const express = require('express')
-var path = require('path')
-var app = express()
+const path = require('path')
+const app = express()
+
+app.set('json spaces', 2) // pretty print JSON
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -10,13 +12,22 @@ const data = Array(itemCount).fill(0).map(
   (_, index) => `box${index}`
 ).reduce(
   (items, item) => {
-    items[item] = Math.random() < 0.5
+    items[item] = false
     return items
   },
   {}
 )
 
 app.use('/get', (req, res) => {
+  res.json(data)
+})
+
+app.use('/set/:id/:value', (req, res) => {
+  const { id, value } = req.params
+  if (data[id] !== undefined) {
+    data[id] = value === "true"
+  }
+
   res.json(data)
 })
 

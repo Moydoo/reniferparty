@@ -204,3 +204,7 @@ span {
 .hidden {
   opacity: 0
 }
+
+* {
+  user-select: none; /* prevent selecting text */
+}
