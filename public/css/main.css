@@ -208,3 +208,7 @@ span {
 * {
   user-select: none; /* prevent selecting text */
 }
+
+label {
+  cursor: pointer;
+}
