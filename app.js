@@ -1,29 +1,34 @@
-const http = require('http')
-const fs = require('fs')
-const port = 3000
+const port = process.env.PORT || 3000
 const express = require('express')
-var path = require('path')
-var app = express()
+const path = require('path')
+const app = express()
+
+app.set('json spaces', 2) // pretty print JSON
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const server = http.createServer(function(req,res) {
-    res.writeHead(200, { 'Content-Type': 'text/html'})
-    fs.readFile('index.html', function (error, data) {
-        if (error){
-            res.writeHead(404)
-            res.write('Error: File Not Found')
-        } else {
-            res.write(data)
-        }
-        res.end()
-    })
+const itemCount = 30
+const data = Array(itemCount).fill(0).map(
+  (_, index) => `box${index}`
+).reduce(
+  (items, item) => {
+    items[item] = false
+    return items
+  },
+  {}
+)
+
+app.use('/get', (req, res) => {
+  res.json(data)
 })
 
-server.listen(port, function (error) {
-    if (error) {
-        console.log('Something went wrong')
-    } else {
-        console.log('Server is listening on port ' + port)
-    }
+app.use('/set/:id/:value', (req, res) => {
+  const { id, value } = req.params
+  if (data[id] !== undefined) {
+    data[id] = value === "true"
+  }
+
+  res.json(data)
 })
+
+app.listen(port)

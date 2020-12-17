@@ -200,3 +200,15 @@ span {
     left: 45%;
   }
 }
+
+.hidden {
+  opacity: 0
+}
+
+* {
+  user-select: none; /* prevent selecting text */
+}
+
+label {
+  cursor: pointer;
+}
