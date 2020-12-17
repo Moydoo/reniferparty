@@ -1,24 +1,24 @@
 version: '3.6'
 services:
   www:
-    image: nodejs:14
+    image: node:14
     volumes:
       - ./:/srv
-    workdir: /srv
+    working_dir: /srv
     command: bash -c "npm ci && npm start"
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.port=80
+      - traefik.port=3000
       - traefik.frontend.rule=Host:${DOMAIN:-renifer-among-us.tymek.cz},www.${DOMAIN:-renifer-among-us.tymek.cz}
       - traefik.frontend.headers.SSLRedirect=true
       - traefik.frontend.headers.SSLHost=${DOMAIN:-renifer-among-us.tymek.cz}
       - traefik.frontend.headers.SSLForceHost=true
       - traefik.docker.network=wan
       - com.ouroboros.enable=true
-    networks:
-      - wan
+#     networks:
+#       - wan
 
-networks:
-  wan:
-    external: true
+# networks:
+#   wan:
+#     external: true
