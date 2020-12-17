@@ -142,12 +142,12 @@ input[type="checkbox"]:checked+span {
 }
 
 span {
-  font-size: 27px;
+  font-size: 24px;
   letter-spacing: 1.5px;
 }
 
 span.main {
-  font-size: 33px;
+  font-size: 28px;
   font-weight: bold;
 }
 
@@ -199,7 +199,7 @@ span.main {
 .tlen {
   color: #4287f5;
   text-shadow: 0 0 20px #4287f5;
-  font-size: 45px;
+  font-size: 35px;
   filter: grayscale(1);
   cursor: pointer;
 }
@@ -207,7 +207,7 @@ span.main {
 .swiat {
   color: #d4a633;
   text-shadow: 0 0 20px #d4a633;
-  font-size: 45px;
+  font-size: 35px;
   filter: grayscale(1);
   cursor: pointer;
 }
@@ -215,7 +215,7 @@ span.main {
 .reactor {
   color: #ff455e;
   text-shadow: 0 0 20px #ff455e;
-  font-size: 45px;
+  font-size: 35px;
   filter: grayscale(1);
   cursor: pointer;
 }
