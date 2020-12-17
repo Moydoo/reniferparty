@@ -1,29 +1,38 @@
 @font-face {
-  font-family: Atari_Classic;
-  src: url(../fonts/AtariClassicChunky-PxXP.ttf);
+  font-family: VT323-Regular;
+  src: url(VT323-Regular.ttf);
 }
 
 * {
-  font-family: Atari_Classic;
+  font-family: VT323-Regular;
 }
 
 body {
-  padding: 20px 50px;
+  margin: 0px 50px;
   background: #262626;
 }
 
 .container {
+  text-align: center;
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
-  grid-gap: 20px;
+  grid-gap: 5px;
   grid-template-areas:
-    "kuchnia konferencyjna akwarium kawiarnia s44"
-    "damska glewo gprawo gubikacja dziecigora"
-    "bar bar bar bar bar";
+    "kuchnia konferencyjna kawiarnia damska gubikacja hallway"
+    " glewo gprawo s44 akwarium dziecigora dziecigora2"
+    "bar bar bar bar bar bar";
 }
 
 /* GRID NAMES */
+.hallway {
+  grid-area: hallway;
+}
+
+.dziecigora2 {
+  grid-area: dziecigora2;
+}
+
 .kuchnia {
   grid-area: kuchnia;
 }
@@ -72,8 +81,8 @@ body {
 }
 
 /* PAGE  */
-h1 {
-  font-size: 1.5em;
+h3 {
+  font-size: 2.5em;
 }
 
 h1, h2, h3, h4, h5 {
@@ -82,7 +91,7 @@ h1, h2, h3, h4, h5 {
 }
 
 h3 {
-  margin: 50px 0px 20px 0px;
+  margin: 50px -0px 20px -10px;
 }
 
 input[type="checkbox"] {
@@ -120,20 +129,26 @@ input[type="checkbox"]:checked+span {
 
 @keyframes blink_green {
   0% {
-    text-shadow: 0 0 0px green;
+    text-shadow: 0 0 3px green;
   }
 
   100% {
-    text-shadow: 0 0 0px green;
+    text-shadow: 0 0 3px green;
   }
 }
 
 .task-text_area {
-  margin: 15px 10px 0px 0px;
+  margin: 10px 10px 0px 0px;
 }
 
 span {
-  font-size: 14px;
+  font-size: 27px;
+  letter-spacing: 1.5px;
+}
+
+span.main {
+  font-size: 33px;
+  font-weight: bold;
 }
 
 .ready {
@@ -148,11 +163,11 @@ span {
 .progressbar-container {
   margin: 50px 0px 0px 0px;
   position: relative;
-  width: 60%;
+  width: 50%;
 }
 
 .progressbar-bar {
-  height: 25px;
+  height: 30px;
   margin: 10px 0;
   border: 2px solid white;
   border-radius: 7px;
@@ -160,55 +175,120 @@ span {
 
 .progressbar-label {
   position: absolute;
-  top: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  top: 11px;
   left: 48%;
   z-index: 2;
   color: white;
 }
 
-@media only screen and (max-width: 1250px) {
+.footer-bar {
+  background: #262626;
+  position: fixed;
+  bottom: 0px;
+  height: 70px;
+  width: 100%;
+  right: 0px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tlen {
+  color: #4287f5;
+  text-shadow: 0 0 20px #4287f5;
+  font-size: 45px;
+  filter: grayscale(1);
+  cursor: pointer;
+}
+
+.swiat {
+  color: #d4a633;
+  text-shadow: 0 0 20px #d4a633;
+  font-size: 45px;
+  filter: grayscale(1);
+  cursor: pointer;
+}
+
+.reactor {
+  color: #ff455e;
+  text-shadow: 0 0 20px #ff455e;
+  font-size: 45px;
+  filter: grayscale(1);
+  cursor: pointer;
+}
+
+.greyscale1 {
+  filter: grayscale(0);
+}
+
+@media only screen and (max-width: 1400px) {
+  body {
+    margin: 0px 0px;
+  }
+
   .container {
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
-    grid-gap: 10px;
+    grid-gap: 20px;
     grid-template-areas:
-      "kuchnia"
-      "konferencyjna"
-      "damska"
-      "glewo"
-      "gprawo"
-      "gubikacja"
-      "akwarium"
-      "kawiarnia"
-      "s44"
-      "dziecigora"
-      "bar";
+      ". kuchnia. "
+      ". konferencyjna ."
+      ". damska."
+      ". glewo."
+      ". gprawo."
+      ". gubikacja."
+      ". akwarium."
+      ". hallway."
+      ". kawiarnia."
+      ". s44."
+      ". dziecigora ."
+      ". dziecigora2 ."
+      ". bar .";
   }
 
   .progressbar-container {
-    width: 85%;
+    width: 100%;
   }
-  .bar{
+
+  .bar {
     position: sticky;
-    bottom: 20px;
+    bottom: 55px;
+    z-index: 10;
   }
-  .progressbar-bar{
+
+  .progressbar-bar {
     background: #262626;
   }
-  .progressbar-label{
+
+  .progressbar-label {
     left: 45%;
   }
-}
 
-.hidden {
-  opacity: 0
-}
+  .tlen {
+    color: lightblue;
+    font-size: 25px;
+  }
 
-* {
-  user-select: none; /* prevent selecting text */
-}
+  .swiat {
+    color: yellow;
+    font-size: 25px;
+  }
 
-label {
-  cursor: pointer;
+  .reactor {
+    color: pink;
+    font-size: 25px;
+  }
+
+  .dziecigora2 {
+    margin-bottom: 30px;
+  }
+
+  .footer-bar {
+    width: 100%;
+    height: 65px;
+  }
 }
