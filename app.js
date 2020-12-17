@@ -7,7 +7,7 @@ app.set('json spaces', 2) // pretty print JSON
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const itemCount = 30
+const itemCount = 61
 const data = Array(itemCount).fill(0).map(
   (_, index) => `box${index}`
 ).reduce(

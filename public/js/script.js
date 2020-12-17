@@ -1,4 +1,16 @@
 (function () {
+  document.querySelectorAll('.tlen, .swiat, .reactor').forEach(element => {
+    element.addEventListener("click", () => {
+      element.classList.toggle("greyscale1")
+    })
+  })
+  document.addEventListener("keydown", event => {
+    const element = document.querySelector(`[data-key="${event.key}"]`)
+    if (element) {
+      element.click()
+    }
+  })
+
   const getData = () =>
     fetch('/get')
       .then(response => response.json())
@@ -8,9 +20,9 @@
       .then(response => response.json())
 
   const setPercentage = percentageValue => {
-    const progressBarLabel = document.querySelector('.progressbar-label');
-    const progressBar = document.querySelector('.ui-progressbar-value');
-    progressBar.style.width = `${percentageValue}%`;
+    const progressBarLabel = document.querySelector('.progressbar-label')
+    const progressBar = document.querySelector('.ui-progressbar-value')
+    progressBar.style.width = `${percentageValue}%`
     progressBarLabel.innerText = `${Math.ceil(percentageValue)}%`
   }
 

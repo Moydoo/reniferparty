@@ -1,6 +1,6 @@
 @font-face {
   font-family: VT323-Regular;
-  src: url(../fonts/VT323-Regular.ttf);
+  src: url(/fonts/VT323-Regular.ttf);
 }
 
 * {
@@ -196,6 +196,10 @@ span.main {
   align-items: center;
 }
 
+.tlen, .swiat, .reactor {
+  opacity: 0.33;
+}
+
 .tlen {
   color: #4287f5;
   text-shadow: 0 0 20px #4287f5;
@@ -220,8 +224,10 @@ span.main {
   cursor: pointer;
 }
 
-.greyscale1 {
+.greyscale1,
+.tlen .greyscale1, .swiat .greyscale1, .reactor .greyscale1 {
   filter: grayscale(0);
+  opacity: 1;
 }
 
 @media only screen and (max-width: 1400px) {
