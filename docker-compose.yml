@@ -16,9 +16,9 @@ services:
       - traefik.frontend.headers.SSLForceHost=true
       - traefik.docker.network=wan
       - com.ouroboros.enable=true
-#     networks:
-#       - wan
+    networks:
+      - wan
 
-# networks:
-#   wan:
-#     external: true
+networks:
+  wan:
+    external: true
