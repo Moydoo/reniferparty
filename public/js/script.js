@@ -2,6 +2,9 @@
   document.querySelectorAll('.tlen, .swiat, .reactor').forEach(element => {
     element.addEventListener("click", () => {
       element.classList.toggle("greyscale1")
+      const name = element.getAttribute('data-name')
+      const state = element.classList.contains('greyscale1')
+      setState(name, state)
     })
   })
   document.addEventListener("keydown", event => {
@@ -15,8 +18,16 @@
     fetch('/get')
       .then(response => response.json())
 
+  const getState = () =>
+    fetch('/getstate')
+      .then(response => response.json())
+
   const setValue = (id, value) =>
     fetch(`/set/${id}/${value ? 'true' : 'false'}`)
+      .then(response => response.json())
+
+  const setState = (id, value) =>
+    fetch(`/state/${id}/${value ? 'true' : 'false'}`)
       .then(response => response.json())
 
   const setPercentage = percentageValue => {
@@ -41,7 +52,24 @@
     }))
   }
 
-  setInterval(() => getData().then(update), 3e3)
+  const updateState = state => {
+    Object.keys(state).map((key => {
+      const value = state[key]
+      const element = document.querySelector(`[data-name="${key}"]`)
+      if (element) {
+        if (value) {
+          element.classList.add('greyscale1')
+        } else {
+          element.classList.remove('greyscale1')
+        }
+      }
+    }))
+  }
+
+  setInterval(() => {
+    getState().then(updateState)
+    getData().then(update)
+  }, 3e3)
 
   document.querySelectorAll('label input').forEach(
     input => input.addEventListener('click', event => {
